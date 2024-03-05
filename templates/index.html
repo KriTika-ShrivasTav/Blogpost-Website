@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Home Page</title>
+
+{% endblock title %}
+
+<!-- ==================================================================== -->
+
+{% block body %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<!-- ============================================================== -->
+
+
+<div class="container" style="background-color: rgb(253, 246, 246);" >
+
+    <img src="{{ url_for('static', filename='blogimg.jpg') }}"
+        style="width: auto; height: auto; max-width: 100%; max-height: 80%;" class="my-3">
+
+
+    <div class="row mb-2 ">
+
+        {% for blog in data %}
+
+
+        <!-- ================================== purana================================= -->
+
+        <div class="col-md-6 my-3 border-dark " style="height:400px;">
+            <div
+                class=" text-bg-light row g-0 border rounded overflow-hidden flex flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class=" col p-4 d-flex flex-column position-static border-dark  ">
+
+                    <h3 class="mb-0">{{blog.title}}</h3>
+                    <div class="mb-1 text-body-secondary">{{blog.pub_date}}</div>
+                    <p class="mb-auto p-2">{{blog.content}}</p>
+                    <h5><small class="text-body-secondary">Author:- {{blog.author}} </small></h5>
+                    <a href="/blog_detail/{{blog.blog_id}}"
+                        class="icon-link gap-1 icon-link-hover stretched-link btn  btn-outline-secondary"><small
+                            class="text-body-primary">
+                            Continue reading</small>
+                    </a>
+                </div>
+
+            </div>
+        </div> 
+
+<!-- ================================================================= -->
+
+
+
+
+
+
+
+        {% endfor %}
+    </div>
+
+</div>
+
+<!-- ========================================================================= -->
+
+{% endblock body %}

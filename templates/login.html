@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block title %}
+    <title>Login Page</title>
+{% endblock title %}
+
+
+
+{% block body %}
+<h1 class="text-center">Login Page</h1>
+<div class="container">
+<form method="POST" action="/login">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="usernameHelp">
+   
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+
+
+{% endblock body %}
